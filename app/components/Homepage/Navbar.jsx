@@ -1,7 +1,8 @@
-"use client"
+'use client';
 
 import { useState } from 'react';
 import { Menu, X, ChevronDown, User } from 'lucide-react';
+import { signIn } from 'next-auth/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,10 +14,36 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  
-  const handleGoogleLogin = () => {
-    // Implementasi login Google di sini
-    console.log("Google login clicked");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        setError(result.error);
+        return;
+      }
+
+      // Redirect to dashboard or home page
+      router.push('/');
+    } catch (err) {
+      setError('An unexpected error occurred');
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await signIn('google', { callbackUrl: '/' });
+    } catch (err) {
+      setError('Google sign-in failed');
+    }
   };
 
   return (
@@ -31,13 +58,19 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              <a
+                href="/"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+              >
                 Home
               </a>
-              <a href="/about" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              <a
+                href="/about"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+              >
                 About
               </a>
-              
+
               {/* Services Dropdown */}
               <div className="relative">
                 <button
@@ -47,17 +80,26 @@ const Navbar = () => {
                   Services
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-                
+
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div className="py-1">
-                      <a href="/services/web" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="/services/web"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Web Development
                       </a>
-                      <a href="/services/mobile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="/services/mobile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Mobile Development
                       </a>
-                      <a href="/services/design" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="/services/design"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Design
                       </a>
                     </div>
@@ -65,10 +107,13 @@ const Navbar = () => {
                 )}
               </div>
 
-              <a href="/contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              <a
+                href="/contact"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+              >
                 Contact
               </a>
-              
+
               {/* Auth Buttons */}
               {!isLoggedIn ? (
                 <div className="flex items-center space-x-4">
@@ -97,10 +142,16 @@ const Navbar = () => {
                   {userMenuOpen && (
                     <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                       <div className="py-1">
-                        <a href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a
+                          href="/profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
                           My Profile
                         </a>
-                        <a href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a
+                          href="/settings"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
                           Settings
                         </a>
                         <button
@@ -122,7 +173,11 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
@@ -132,22 +187,34 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="/" className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">
+              <a
+                href="/"
+                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+              >
                 Home
               </a>
-              <a href="/about" className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">
+              <a
+                href="/about"
+                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+              >
                 About
               </a>
-              <a href="/services" className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">
+              <a
+                href="/services"
+                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+              >
                 Services
               </a>
-              <a href="/contact" className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">
+              <a
+                href="/contact"
+                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+              >
                 Contact
               </a>
               {!isLoggedIn && (
                 <>
                   <button
-                    onClick={() => setShowLoginModal(true)}
+                    onClick={handleGoogleSignIn}
                     className="w-full text-left text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
                   >
                     Login
@@ -172,7 +239,9 @@ const Navbar = () => {
             <h2 className="text-2xl font-bold mb-4">Login</h2>
             <form className="space-y-4">
               <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   className="w-full p-2 border rounded-md focus:border-blue-500 focus:outline-none"
@@ -180,7 +249,9 @@ const Navbar = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Password
+                </label>
                 <input
                   type="password"
                   className="w-full p-2 border rounded-md focus:border-blue-500 focus:outline-none"
@@ -194,7 +265,7 @@ const Navbar = () => {
                 Login
               </button>
               <button
-                onClick={handleGoogleLogin}
+                onClick={handleGoogleSignIn}
                 className="w-full border border-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-50 flex items-center justify-center"
               >
                 <img
@@ -222,7 +293,9 @@ const Navbar = () => {
             <h2 className="text-2xl font-bold mb-4">Create Account</h2>
             <form className="space-y-4">
               <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Name
+                </label>
                 <input
                   type="text"
                   className="w-full p-2 border rounded-md focus:border-blue-500 focus:outline-none"
@@ -230,7 +303,9 @@ const Navbar = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   className="w-full p-2 border rounded-md focus:border-blue-500 focus:outline-none"
@@ -238,7 +313,9 @@ const Navbar = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Password
+                </label>
                 <input
                   type="password"
                   className="w-full p-2 border rounded-md focus:border-blue-500 focus:outline-none"
