@@ -119,7 +119,7 @@ export const authOptions = {
 
         return true;
       } catch (error) {
-        throw new Error('Failed to sign in: ' + error.message);
+        console.error('Error in signIn callback:', error);
         return false;
       }
     },
