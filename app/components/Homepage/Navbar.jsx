@@ -6,9 +6,9 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Container from '../Login/ContainerLogin';
 import LoginForm from '../Login/LoginForm';
-import { ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, User } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbarr() {
   const { data: session, status } = useSession();
   const profileImage = session?.user?.image || profileDefault;
   const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
