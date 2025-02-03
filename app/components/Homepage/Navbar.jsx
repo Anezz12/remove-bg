@@ -166,7 +166,9 @@ export default function Navbarr() {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-green-800 shadow-lg' : 'bg-green-700'
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg'
+          : 'bg-transparent'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -177,13 +179,7 @@ export default function Navbarr() {
               className="flex items-center space-x-2 transition-transform hover:scale-105"
               href="/"
             >
-              {/* <Image
-                className="h-12 w-auto"
-                src={logo}
-                alt="GoMealSaver"
-                priority
-              /> */}
-              <span className="hidden md:block text-white text-xl font-bold">
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 Harsena Argretya
               </span>
             </Link>
@@ -193,163 +189,48 @@ export default function Navbarr() {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-white hover:text-green-200 px-3 py-2 text-sm font-medium transition-colors"
+              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
             >
               Home
             </Link>
             <Link
-              href="/about"
-              className="text-white hover:text-green-200 px-3 py-2 text-sm font-medium transition-colors"
+              href="/project"
+              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
             >
-              About
+              Project
             </Link>
             {session && (
-              <div className=" relative">
-                <button
-                  onClick={toggleDropdown}
-                  className="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium flex items-center"
-                >
-                  Tools
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                    <div className="py-1">
-                      <Link
-                        href="/services/web"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Web Development
-                      </Link>
-                      <Link
-                        href="/services/mobile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Mobile Development
-                      </Link>
-                      <Link
-                        href="/services/design"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Design
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* User Menu */}
-          <div className="flex items-center space-x-4">
-            {renderAuthButton()}
-
-            {/* Notifications - Only show if logged in */}
-            {session && (
-              <Link href="/messages" aria-label="Messages">
-                <button
-                  className="relative p-2 text-white hover:text-green-200 transition-colors"
-                  type="button"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                    />
-                  </svg>
-                </button>
-              </Link>
-            )}
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-green-200 transition-colors"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d={
-                    isMobileMenuOpen
-                      ? 'M6 18L18 6M6 6l12 12'
-                      : 'M4 6h16M4 12h16M4 18h16'
-                  }
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden fixed top-[64px] left-0 w-full transition-all duration-300 ease-in-out z-50 ${
-          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="px-4 py-3 space-y-4 bg-green-800 shadow-lg min-h-screen">
-          <Link
-            href="/"
-            className="block text-white hover:bg-green-700 px-4 py-3 rounded-lg text-lg transition-colors active:bg-green-600"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="block text-white hover:bg-green-700 px-4 py-3 rounded-lg text-lg transition-colors active:bg-green-600"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            About
-          </Link>
-          {session && (
-            <>
               <div className="relative">
                 <button
                   onClick={toggleDropdown}
-                  className="w-full text-left text-white hover:bg-green-700 px-4 py-3 rounded-lg text-lg transition-colors active:bg-green-600 flex items-center justify-between"
+                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium flex items-center transition-all duration-200 hover:scale-105"
                 >
                   Tools
                   <ChevronDown
-                    className={`h-5 w-5 transition-transform duration-200 ${
+                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
                       isDropdownOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {isDropdownOpen && (
-                  <div className="mt-2 w-full rounded-lg bg-white shadow-lg overflow-hidden">
-                    <div className="py-2">
+                  <div className="absolute right-0 mt-2 w-48 rounded-xl shadow-lg bg-white/80 backdrop-blur-md border border-gray-200">
+                    <div className="py-1">
                       <Link
                         href="/services/web"
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                       >
                         Web Development
                       </Link>
                       <Link
                         href="/services/mobile"
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                       >
                         Mobile Development
                       </Link>
                       <Link
                         href="/services/design"
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                       >
                         Design
                       </Link>
@@ -357,31 +238,179 @@ export default function Navbarr() {
                   </div>
                 )}
               </div>
-              <button
-                onClick={() => {
-                  handleSignOut();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full text-left text-white hover:bg-green-700 px-4 py-3 rounded-lg text-lg transition-colors active:bg-green-600"
-              >
-                Sign Out
-              </button>
-            </>
-          )}
+            )}
+          </div>
 
-          {!session && (
+          {/* Auth Button */}
+          <div className="flex items-center space-x-4">
+            <div className="relative" ref={authMenuRef}>
+              {session ? (
+                <button
+                  onClick={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
+                  className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200"
+                >
+                  <Image
+                    src={profileImage}
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="rounded-full border-2 border-white"
+                  />
+                  <span className="hidden md:block">
+                    {session.user.username}
+                  </span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsLoginModalOpen(true)}
+                  className="hidden md:flex items-center space-x-2 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-all duration-200 hover:scale-105"
+                >
+                  <span>Login</span>
+                </button>
+              )}
+
+              {isAuthMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg py-1 z-50">
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    onClick={() => setIsAuthMenuOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                  >
+                    Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Menu Button */}
             <button
-              onClick={() => {
-                setIsLoginModalOpen(true);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full text-left text-white hover:bg-green-700 px-4 py-3 rounded-lg text-lg transition-colors active:bg-green-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
             >
-              Login
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
-          )}
+          </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden fixed inset-x-0 top-[80px] transition-all duration-300 ease-in-out z-50 ${
+          isMobileMenuOpen
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-4 pointer-events-none'
+        }`}
+      >
+        <div className="mx-4 rounded-xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg">
+          <div className="px-4 py-3 space-y-3">
+            <Link
+              href="/"
+              className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="/project"
+              className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Project
+            </Link>
+            {session && (
+              <>
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdown}
+                    className="w-full text-left text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-between"
+                  >
+                    Tools
+                    <ChevronDown
+                      className={`h-5 w-5 transition-transform duration-200 ${
+                        isDropdownOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  {isDropdownOpen && (
+                    <div className="mt-2 rounded-lg bg-gray-50 overflow-hidden">
+                      <Link
+                        href="/services/web"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        Web Development
+                      </Link>
+                      <Link
+                        href="/services/mobile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        Mobile Development
+                      </Link>
+                      <Link
+                        href="/services/design"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        Design
+                      </Link>
+                    </div>
+                  )}
+                </div>
+                <button
+                  onClick={() => {
+                    handleSignOut();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left text-red-600 hover:bg-red-50 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  Sign Out
+                </button>
+              </>
+            )}
+
+            {!session && (
+              <button
+                onClick={() => {
+                  setIsLoginModalOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-center bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-blue-700"
+              >
+                Login
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Login Modal */}
+      {isLoginModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60]">
+          <Container>
+            <button
+              onClick={() => setIsLoginModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <div className="flex items-center justify-center mb-6">
+              <span className="text-2xl font-semibold text-gray-900">
+                Harsena Argretya
+              </span>
+            </div>
+            <LoginForm />
+          </Container>
+        </div>
+      )}
     </nav>
   );
 }

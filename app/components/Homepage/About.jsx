@@ -20,12 +20,12 @@ export default function About() {
                 </div>
               </div>
               <div className="lg:order-first lg:row-span-2">
-                <h1 className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl dark:text-black">
+                <h1 className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl text-black">
                   {
                     "I'm Harsena Argretya, an indonesia Developer Living in Yogyakarta ID."
                   }
                 </h1>
-                <div className="mx-auto text-zinc-400 leading-8 mt-10 mb-20">
+                <div className="mx-auto text-zinc-600 dark:text-zinc-400 leading-8 mt-10 mb-20">
                   <p>
                     {
                       "Hello I am Sena. a self-taught Indonesian programmer. since 2022, I've been learning programming. Now a software engineering student with more web development experience."
