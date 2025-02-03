@@ -8,7 +8,7 @@ import Container from '../Login/ContainerLogin';
 import LoginForm from '../Login/LoginForm';
 import { ChevronDown } from 'lucide-react';
 
-export default function Navbarr() {
+export default function Navbar() {
   const { data: session, status } = useSession();
   const profileImage = session?.user?.image || profileDefault;
   const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
@@ -152,7 +152,7 @@ export default function Navbarr() {
                   priority
                 /> */}
                 <span className="text-2xl font-semibold text-gray-900">
-                  Harsena-Tools
+                  Harsena Argretya
                 </span>
               </div>
               <LoginForm />
@@ -184,7 +184,7 @@ export default function Navbarr() {
                 priority
               /> */}
               <span className="hidden md:block text-white text-xl font-bold">
-                Harsena-Tools
+                Harsena Argretya
               </span>
             </Link>
           </div>
