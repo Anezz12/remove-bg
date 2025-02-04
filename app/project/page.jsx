@@ -2,29 +2,35 @@ import Link from 'next/link';
 
 const projects = [
   {
-    name: 'Landing Page',
-    description: 'Personal Website',
+    name: 'Portfolio 2024',
+    description:
+      'Modern Portfolio crafted with Next.js 14 & Tailwind CSS. Features dark mode, responsive design, and seamless animations.',
+    tech: 'Next.js, Tailwind CSS, Framer Motion',
     url: 'https://www.argretya.my.id',
     logo: '/sena.jpg',
   },
   {
     name: 'Amikom Connect',
-    description: 'Full Stack Web App',
+    description: 'A powerful social platform built for students.',
+    tech: 'React, Node.js, MongoDB, Socket.io',
     url: 'https://amikomconnect.vercel.app',
     logo: '/amikom.png',
   },
   {
     name: 'GoMealSaver',
     description:
-      'Capstone Project Web App Dicoding Indonesia "Best Capstones by Dicoding"',
+      '🏆 Award-Winning Platform - Best Capstone by Dicoding Indonesia. Revolutionizing food waste management with smart solutions.',
+    tech: 'Next.js, Server Actions, MongoDB,',
     url: 'https://www.gomealsaver.store/',
     logo: '/gomealsaver.png',
   },
   {
-    name: 'Rental Ps',
-    description: 'Full Stack Desktop App',
+    name: 'GameStation Pro',
+    description:
+      'Next-gen gaming center management system with real-time monitoring and automated billing.',
+    tech: 'C#, .NET, SQL Server, WPF',
     url: 'https://github.com/Anezz12/PsRental',
-    // logo: "/logos/kawalcovid19.webp",
+    // logo: '/gamestation.png',
   },
 ];
 
@@ -34,11 +40,11 @@ export default function Page() {
       <div className="relative px-4 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-2xl lg:max-w-2xl">
           <header className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl mt-20 dark:text-black">
-            {'Things I’ve made trying to put my dent in the universe.'}
+            {'Innovative Solutions & Digital Experiences 🚀'}
           </header>
           <p className="text-zinc-400 mx-auto leading-8 mt-10">
             {
-              "As a junior Web Development, I love creating simple web projects, but these are the projects I'm most proud of. Many of them are open source, so if you see something that interests you, take a look at the code and contribute if you have ideas to improve it."
+              'Passionate Full-Stack Developer crafting cutting-edge web solutions. From award-winning platforms to innovative apps, each project represents a unique challenge conquered. Most projects are open-source - feel free to explore and contribute! ✨'
             }
           </p>
           <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 mt-20 mb-40">
@@ -50,7 +56,7 @@ export default function Page() {
                 <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
                   <img
                     src={project.logo}
-                    alt=""
+                    alt={project.name}
                     className="rounded-full bg-white"
                   />
                 </div>
@@ -68,7 +74,10 @@ export default function Page() {
                 <p className="relative z-10 mt-2 text-sm dark:text-zinc-600 text-zinc-400">
                   {project.description}
                 </p>
-                <p className="relative z-10 mt-6 flex text-sm font-medium dark:text-zinc-500 transition group-hover:text-teal-600 text-zinc-200">
+                <p className="relative z-10 mt-2 text-xs dark:text-zinc-500 text-zinc-500">
+                  {project.tech}
+                </p>
+                <p className="relative z-10 mt-6 flex text-sm font-medium dark:text-zinc-500 transition group-hover:text-blue-500 text-zinc-200">
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"

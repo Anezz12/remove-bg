@@ -247,7 +247,7 @@ export default function Navbarr() {
               {session ? (
                 <button
                   onClick={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
-                  className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200"
+                  className="flex items-center space-x-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200"
                 >
                   <Image
                     src={profileImage}
