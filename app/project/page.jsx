@@ -4,8 +4,8 @@ const projects = [
   {
     name: 'Landing Page',
     description: 'Personal Website',
-    url: 'https://harsena-argretya.vercel.app',
-    logo: '/logos/pejuang-kode.svg',
+    url: 'https://www.argretya.my.id',
+    logo: '/sena.jpg',
   },
   {
     name: 'Amikom Connect',
