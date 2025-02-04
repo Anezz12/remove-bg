@@ -1,58 +1,53 @@
 import { Schema, model, models } from 'mongoose';
 
-const UserSchema = new Schema({
-    Username: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
+const UserSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: [true, 'Username is required'],
     },
     email: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
+      type: String,
+      unique: [true, 'Email already exists'],
+      required: [true, 'Email is required'],
     },
     name: {
-        type: String,
-        required: true,
-        trim: true,
+      type: String,
     },
-    role: {
-        type: String,
-        required: true,
-        enum: ['user', 'admin'],
-        default: 'user',
+    password: {
+      type: String,
+      required: false,
     },
     image: {
-        type: String,
+      type: String,
+    },
+    role: {
+      type: String,
+      required: true,
+      enum: ['user', 'admin'],
+      default: 'user',
     },
 
     provider: {
-        type: String,
-         enum: ['credentials', 'google'],
+      type: String,
+      enum: ['credentials', 'google'],
       default: 'credentials',
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
+      type: Date,
+      default: Date.now,
     },
 
     updatedAt: {
-        type: Date,
-        default: Date.now,
+      type: Date,
+      default: Date.now,
     },
 
     deletedAt: {
-        type: Date,
+      type: Date,
     },
-
-}, 
-{
+  },
+  {
     timestamps: true,
   }
 );

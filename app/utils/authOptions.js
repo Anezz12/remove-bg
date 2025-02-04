@@ -48,7 +48,7 @@ export const authOptions = {
             const hashedPassword = await bcrypt.hash(credentials.password, 10);
 
             // Create a new user
-            const newUser = new User({
+            const newUser = await User.create({
               email: credentials.email,
               password: hashedPassword,
               username: credentials.email.split('@')[0],
@@ -98,21 +98,20 @@ export const authOptions = {
     async signIn({ account, profile }) {
       try {
         await connectDB();
-        if (!account?.provider === 'google') {
+        if (account?.provider === 'google') {
           const userExists = await User.findOne({ email: profile.email });
 
           if (!userExists) {
             const username = profile.name
+              .slice(0, 20)
               .toLowerCase()
-              .split(' ')
               .replace(/\s/g, '');
+
             await User.create({
               email: profile.email,
-              name: profile.name,
-              username,
-              role: 'user',
+              username: username,
+              name: profile.name, // Tambahkan name dari Google profile
               image: profile.picture,
-              provider: 'google',
             });
           }
         }

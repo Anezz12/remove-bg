@@ -30,7 +30,7 @@ const projects = [
       'Next-gen gaming center management system with real-time monitoring and automated billing.',
     tech: 'C#, .NET, SQL Server, WPF',
     url: 'https://github.com/Anezz12/PsRental',
-    // logo: '/gamestation.png',
+    logo: '/amikom.png',
   },
 ];
 
