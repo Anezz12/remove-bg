@@ -34,7 +34,7 @@ export default function About() {
                   <br />
                   <p>
                     {
-                      "I'am a 4th semester student majoring in Informatics👨🏻‍💻, I decided to pursue my passion for programming. I studied full-stack web development. My favorite part of programming is the problem-solving aspect🔥"
+                      "I'am a 5th semester student majoring in Informatics👨🏻‍💻, I decided to pursue my passion for programming. I studied full-stack web development. My favorite part of programming is the problem-solving aspect🔥"
                     }
                   </p>
                   <br />
