@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../utils/authOptions';
+import profileDefault from '@/app/assets/image/profile.png';
 import { redirect } from 'next/navigation';
 import { User, Settings, FileText, Bell } from 'lucide-react';
 import Link from 'next/link';
@@ -21,7 +22,7 @@ export default async function ProfilePage() {
           <div className="p-5">
             <div className="flex items-center space-x-4 mb-6">
               <Image
-                src={user.image || '/default-avatar.png'}
+                src={user.image || profileDefault}
                 alt="Profile"
                 width={50}
                 height={50}
