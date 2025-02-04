@@ -2,22 +2,23 @@ import Link from 'next/link';
 
 const projects = [
   {
-    name: 'Landing Page ',
+    name: 'Landing Page',
     description: 'Personal Website',
     url: 'https://harsena-argretya.vercel.app',
-    // logo: "/logos/pejuang-kode.svg",
+    logo: '/logos/pejuang-kode.svg',
   },
   {
     name: 'Amikom Connect',
     description: 'Full Stack Web App',
     url: 'https://amikomconnect.vercel.app',
-    // logo: "/logos/rumah-berbagi.svg",
+    logo: '/amikom.png',
   },
   {
-    name: 'Mistar FotoCopy',
-    description: 'business web',
-    url: 'https://mistarfotocopy.vercel.app',
-    // logo: "/logos/wbw.svg",
+    name: 'GoMealSaver',
+    description:
+      'Capstone Project Web App Dicoding Indonesia "Best Capstones by Dicoding"',
+    url: 'https://www.gomealsaver.store/',
+    logo: '/gomealsaver.png',
   },
   {
     name: 'Rental Ps',
@@ -46,9 +47,13 @@ export default function Page() {
                 key={project.name}
                 className="group relative flex flex-col items-start"
               >
-                {/* <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                      <img src={project.logo} alt="" className="h-8 w-8" />
-                    </div> */}
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                  <img
+                    src={project.logo}
+                    alt=""
+                    className="rounded-full bg-white"
+                  />
+                </div>
                 <h2 className="mt-6 text-base font-semibold dark:text-zinc-800 text-zinc-100">
                   <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 dark:bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
                   <Link
