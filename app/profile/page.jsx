@@ -34,34 +34,34 @@ export default async function ProfilePage() {
             </div>
 
             <nav className="space-y-2">
-              <a
+              <Link
                 href="#"
                 className="flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600"
               >
                 <User size={20} />
                 <span>Profile</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50"
               >
                 <FileText size={20} />
                 <span>Projects</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50"
               >
                 <Bell size={20} />
                 <span>Notifications</span>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="profile/setting"
                 className="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50"
               >
                 <Settings size={20} />
                 <span>Settings</span>
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
