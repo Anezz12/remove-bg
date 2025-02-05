@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -41,7 +43,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center  bg-gray-50">
+    <div className="flex items-center justify-center pt-32 pb-36 bg-gray-50">
       <div className="w-full max-w-sm">
         <div className="bg-white rounded-lg shadow-md px-6 py-8">
           <h1 className="text-xl font-semibold mb-4 text-center text-gray-900">
