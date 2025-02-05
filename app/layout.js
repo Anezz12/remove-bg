@@ -3,6 +3,7 @@ import AuthProvider from './components/Login/AuthProvider';
 import Footer from './components/Homepage/Footer';
 import Navbar from './components/Homepage/Navbar';
 import Script from 'next/script';
+import AdBanner from './components/Homepage/AdBanner';
 
 export const metadata = {
   title: 'Harsena | Portofolio',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <AuthProvider>
+          <AdBanner />
           <Navbar />
           {children}
           <Footer />
