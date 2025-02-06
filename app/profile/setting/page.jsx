@@ -1,6 +1,8 @@
+import Link from 'next/link';
+
 export default function ProfileSettingPage() {
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 pt-24 px-2">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold mb-8 text-gray-800">Settings</h1>
 
@@ -28,9 +30,11 @@ export default function ProfileSettingPage() {
               <p className="text-gray-600 text-center mb-6">
                 Update your password to keep your account secure
               </p>
-              <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">
-                Change Password
-              </button>
+              <Link href="/profile/setting/password">
+                <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">
+                  Change Password
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -57,9 +61,11 @@ export default function ProfileSettingPage() {
               <p className="text-gray-600 text-center mb-6">
                 Update your personal information and preferences
               </p>
-              <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">
-                Edit Now
-              </button>
+              <Link href="/profile/setting/edit">
+                <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">
+                  Edit Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
