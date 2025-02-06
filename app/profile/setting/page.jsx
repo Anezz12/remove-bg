@@ -61,7 +61,7 @@ export default function ProfileSettingPage() {
               <p className="text-gray-600 text-center mb-6">
                 Update your personal information and preferences
               </p>
-              <Link href="/profile/setting/edit">
+              <Link href="/profile/setting/profile">
                 <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">
                   Edit Now
                 </button>
