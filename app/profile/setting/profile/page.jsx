@@ -1,9 +1,25 @@
 'use client';
 import ProfileDefault from '@/app/assets/image/profile.png';
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 export default function ProfileSettingProfilePage() {
   const { data: session } = useSession();
+
+  const [error, setError] = useState('');
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    const MAX_SIZE = 1024 * 1024; // 1MB
+
+    if (file.size > MAX_SIZE) {
+      setError('File size is too large. Max 1MB');
+      e.target.value = null;
+      return;
+    }
+
+    setError('');
+  };
 
   const profileImage = session?.user?.image || ProfileDefault;
   return (
@@ -11,7 +27,7 @@ export default function ProfileSettingProfilePage() {
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-6 text-gray-800">Edit Profile</h1>
         <p className="max-w-lg text-xl font-semibold text-gray-600 mb-8">
-          Masukkan informasi yang valid <br /> agar proses belajar lebih mudah
+          Masukkan informasi yang valid <br /> agar proses lebih mudah
         </p>
         <div className="bg-white rounded-lg shadow-md p-8">
           <form className="space-y-6">
@@ -34,6 +50,7 @@ export default function ProfileSettingProfilePage() {
                     id="avatar"
                     className="hidden"
                     accept="image/*"
+                    onChange={handleImageChange}
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +73,7 @@ export default function ProfileSettingProfilePage() {
                     />
                   </svg>
                 </label>
+                {error && <p className="text-sm text-red-500">{error}</p>}
               </div>
               <p className="text-sm text-gray-500">
                 Click to change profile picture
@@ -92,7 +110,7 @@ export default function ProfileSettingProfilePage() {
                 type="text"
                 id="username"
                 maxLength={20}
-                defaultValue={session?.user?.username}
+                defaultValue={session?.user?.name}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -110,7 +128,7 @@ export default function ProfileSettingProfilePage() {
                 id="email"
                 defaultValue={session?.user?.email}
                 disabled
-                className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-500"
+                className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-500 cursor-not-allowed"
               />
             </div>
 
@@ -123,7 +141,7 @@ export default function ProfileSettingProfilePage() {
                 Phone Number
               </label>
               <input
-                type="tel"
+                type="number"
                 id="phone"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />

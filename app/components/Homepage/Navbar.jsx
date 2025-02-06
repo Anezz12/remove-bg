@@ -256,9 +256,7 @@ export default function Navbarr() {
                     height={32}
                     className="rounded-full border-2 border-white"
                   />
-                  <span className="hidden md:block">
-                    {session.user.username}
-                  </span>
+                  <span className="hidden md:block">{session.user.name}</span>
                 </button>
               ) : (
                 <button
