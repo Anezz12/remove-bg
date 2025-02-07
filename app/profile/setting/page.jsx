@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import SideBarContainer from '@/app/components/Settings/SideBarContainer';
+import MainContainer from '@/app/components/Settings/MainContainer';
 
 export default function ProfileSettingPage() {
   return (
     <>
-      <SideBarContainer>
+      <MainContainer>
         <div className="min-h-screen pt-20 px-6">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-8 text-gray-800">Settings</h1>
@@ -74,7 +74,7 @@ export default function ProfileSettingPage() {
             </div>
           </div>
         </div>
-      </SideBarContainer>
+      </MainContainer>
     </>
   );
 }

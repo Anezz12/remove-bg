@@ -1,10 +1,10 @@
 import { User, Settings, FileText, Bell } from 'lucide-react';
-import SideBarContainer from '@/app/components/Settings/SideBarContainer';
+import MainContainer from '@/app/components/Settings/MainContainer';
 
 export default async function ProfilePage() {
   return (
     <>
-      <SideBarContainer>
+      <MainContainer>
         <div className="flex-1 p-8">
           <div className="max-w-5xl mx-auto">
             {/* Stats Overview */}
@@ -81,7 +81,7 @@ export default async function ProfilePage() {
             </div>
           </div>
         </div>
-      </SideBarContainer>
+      </MainContainer>
     </>
   );
 }
