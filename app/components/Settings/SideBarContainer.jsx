@@ -98,7 +98,7 @@ export default function ProfilePage({ user, children }) {
         </div>
 
         {/* Floating Mobile Navigation */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 lg:hidden z-50">
+        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 lg:hidden z-50">
           <nav className="flex items-center gap-3 px-6 py-3 rounded-full bg-white shadow-lg">
             {navigation.map((item) => {
               const isActive = pathname === item.href;

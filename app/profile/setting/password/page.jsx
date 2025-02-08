@@ -4,8 +4,8 @@ export default function ProfileSettingPasswordPage() {
   return (
     <>
       <SideBarContainer>
-        <div className="min-h-screen bg-gray-100 pt-24 px-2">
-          <div className="max-w-2xl mx-auto">
+        <div className="min-h-screen pt-24 pb-10 px-2">
+          <div className="max-w-2xl mx-10">
             <h1 className="text-4xl font-bold mb-6 text-gray-800">
               Edit Password
             </h1>
