@@ -4,6 +4,7 @@ import Footer from './components/Homepage/Footer';
 import Navbar from './components/Homepage/Navbar';
 import Script from 'next/script';
 import AdBanner from './components/Homepage/AdBanner';
+import ThemeProvider from './components/Theme/ThemeProvider';
 
 export const metadata = {
   title: 'Harsena | Portofolio',
@@ -12,20 +13,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
           strategy="beforeInteractive"
         />
       </head>
-      <body>
-        <AuthProvider>
-          <AdBanner />
-          <Navbar />
-          {children}
-          <Footer />
-        </AuthProvider>
+      <body className="transition-colors duration-300">
+        <ThemeProvider>
+          <AuthProvider>
+            <div>
+              <AdBanner />
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

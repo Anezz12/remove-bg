@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Container from '../Login/ContainerLogin';
 import LoginForm from '../Login/LoginForm';
 import { Menu, X, ChevronDown, User } from 'lucide-react';
+import ToggleButton from '../Theme/ToggleButton';
 
 export default function Navbarr() {
   const { data: session, status } = useSession();
@@ -97,6 +98,7 @@ export default function Navbarr() {
               >
                 Profile
               </Link>
+              <ToggleButton />
               <button
                 onClick={handleSignOut}
                 className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
@@ -276,6 +278,7 @@ export default function Navbarr() {
                   >
                     Profile
                   </Link>
+                  <ToggleButton />
                   <button
                     onClick={handleSignOut}
                     className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
