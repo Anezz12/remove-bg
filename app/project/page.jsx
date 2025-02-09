@@ -61,23 +61,25 @@ export default function Page() {
                   />
                 </div>
                 <h2 className="mt-6 text-base font-semibold dark:text-zinc-800 text-zinc-100">
-                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 dark:bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 dark:bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-100/50 sm:-inset-x-6 sm:rounded-2xl"></div>
                   <Link
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10">{project.name}</span>
+                    <span className="relative z-10 text-zinc-900">
+                      {project.name}
+                    </span>
                   </Link>
                 </h2>
-                <p className="relative z-10 mt-2 text-sm dark:text-zinc-600 text-zinc-400">
+                <p className="relative z-10 mt-2 text-sm dark:text-zinc-600 text-black-50 ">
                   {project.description}
                 </p>
                 <p className="relative z-10 mt-2 text-xs dark:text-zinc-500 text-zinc-500">
                   {project.tech}
                 </p>
-                <p className="relative z-10 mt-6 flex text-sm font-medium dark:text-zinc-500 transition group-hover:text-blue-500 text-zinc-200">
+                <p className="relative z-10 mt-6 flex text-sm font-medium dark:text-zinc-500 transition group-hover:text-blue-500 text-blue-400">
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"
