@@ -1,22 +1,3 @@
-// export const navLink = [
-//   {
-//     name: 'Home',
-//     href: '/',
-//   },
-//   {
-//     name: 'About',
-//     href: '/about',
-//   },
-//   {
-//     name: 'Tools',
-//     href: '/tools',
-//   },
-//   {
-//     name: 'Projects',
-//     href: '/projects',
-//   },
-// ];
-
 export default function Footer() {
   return (
     <footer className="mt-auto text-center text-zinc-400 py-5 px-24 border-t border-zinc-800 dark:border-zinc-100">
@@ -35,7 +16,7 @@ export default function Footer() {
             );
           })}
         </div> */}
-        <small className=" items-center gap-5 mb-5 text-white dark:text-black">
+        <small className=" items-center gap-5 mb-5 dark:text-zinc-500 text-black">
           &copy; 2025 Harsena Argretya All right reserved.
         </small>
       </div>
