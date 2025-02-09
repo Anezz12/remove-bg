@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { User, Settings, FileText, Bell, LogOut } from 'lucide-react';
 import Link from 'next/link';
+import defaultAfatar from '@/app/assets/image/profile.png';
 
 export default function ProfilePage({ user, children }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function ProfilePage({ user, children }) {
                 className="flex items-center space-x-4 mb-6 w-full hover:bg-gray-50 p-2 rounded-lg"
               >
                 <Image
-                  src={user?.image || '/default-avatar.png'}
+                  src={user?.image || defaultAfatar}
                   alt="Profile"
                   width={50}
                   height={50}
