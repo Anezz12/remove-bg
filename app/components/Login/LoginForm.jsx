@@ -41,15 +41,15 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center  bg-gray-50">
+    <div className="flex items-center justify-center bg-gray-50 dark:bg-zinc-900">
       <div className="w-full max-w-sm">
-        <div className="bg-white rounded-lg shadow-md px-6 py-8">
-          <h1 className="text-xl font-semibold mb-4 text-center text-gray-900">
+        <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-zinc-800/50 px-6 py-8">
+          <h1 className="text-xl font-semibold mb-4 text-center text-gray-900 dark:text-gray-100">
             Sign in to your account
           </h1>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
+            <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400 rounded">
               {error}
             </div>
           )}
@@ -58,7 +58,7 @@ export default function LoginForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-200"
               >
                 Your email
               </label>
@@ -70,13 +70,13 @@ export default function LoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@exemple.com"
                 required
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm px-3 py-2"
+                className="mt-1 w-full rounded-md border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-gray-100 text-sm px-3 py-2 placeholder-gray-500 dark:placeholder-gray-400"
               />
             </div>
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-200"
               >
                 Password
               </label>
@@ -88,12 +88,12 @@ export default function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm px-3 py-2"
+                className="mt-1 w-full rounded-md border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-gray-100 text-sm px-3 py-2 placeholder-gray-500 dark:placeholder-gray-400"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2 px-4 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full py-2 px-4 rounded-md text-sm font-medium text-white bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             >
               Sign in
             </button>
@@ -102,10 +102,10 @@ export default function LoginForm() {
           <div className="mt-4">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-gray-300 dark:border-zinc-700"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2 bg-white dark:bg-zinc-800 text-gray-500 dark:text-gray-400">
                   Or continue with
                 </span>
               </div>
@@ -114,7 +114,7 @@ export default function LoginForm() {
             <div className="mt-4">
               <button
                 onClick={handleGoogleSignIn}
-                className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700/50 transition-colors"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -145,11 +145,11 @@ export default function LoginForm() {
           </div>
 
           <div className="mt-4 text-center">
-            <p className="text-sm text-gray-600">
-              Dont have an account?{' '}
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Don't have an account?{' '}
               <Link
                 href="/register"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
               >
                 Register
               </Link>
