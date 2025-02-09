@@ -32,40 +32,41 @@ export default function ProfilePage({ user, children }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 sm:px-8 pt-20 sm:mt-0 pb-24 lg:pb-0">
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-900 sm:px-8 pt-20 sm:mt-0 pb-24 lg:pb-0">
       <div className="flex flex-col lg:flex-row">
         {/* Desktop Sidebar */}
-        <div className="hidden lg:block lg:w-64 bg-white shadow-sm">
+        <div className="hidden lg:block lg:w-64 bg-white dark:bg-zinc-800 shadow-sm rounded-xl">
           <div className="p-5">
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdown}
-                className="flex items-center space-x-4 mb-6 w-full hover:bg-gray-50 p-2 rounded-lg"
+                className="flex items-center space-x-4 mb-6 w-full hover:bg-gray-50 dark:hover:bg-zinc-700/50 p-2 rounded-lg transition-colors"
               >
                 <Image
                   src={user?.image || defaultAfatar}
                   alt="Profile"
                   width={50}
                   height={50}
-                  className="rounded-full"
+                  className="rounded-full ring-2 ring-gray-200 dark:ring-zinc-700"
                 />
                 <div className="text-left">
-                  <h2 className="font-semibold text-gray-800">{user?.name}</h2>
-                  <p className="text-sm text-gray-500">{user?.email}</p>
+                  <h2 className="font-semibold text-gray-800 dark:text-gray-100">
+                    {user?.name}
+                  </h2>
                 </div>
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 w-full bg-white border rounded-lg shadow-lg mt-2 py-2 z-50">
+                <div className="absolute top-full left-0 w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg shadow-lg mt-2 py-2 z-50">
                   <Link
                     href="/profile"
-                    className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50"
+                    className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50"
                     onClick={() => setIsDropdownOpen(false)}
                   >
                     <User size={16} className="mr-2" />
                     View Profile
                   </Link>
-                  <button className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-50">
+                  <button className="flex items-center w-full px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50">
                     <LogOut size={16} className="mr-2" />
                     Sign out
                   </button>
@@ -82,11 +83,11 @@ export default function ProfilePage({ user, children }) {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`flex items-center space-x-3 px-4 py-2.5 rounded-lg
+                    className={`flex items-center space-x-3 px-4 py-2.5 rounded-lg transition-colors
                       ${
                         isActive
-                          ? 'bg-blue-50 text-blue-600'
-                          : 'text-gray-600 hover:bg-gray-50'
+                          ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400'
+                          : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700/50'
                       }`}
                   >
                     <Icon size={20} />
@@ -100,7 +101,7 @@ export default function ProfilePage({ user, children }) {
 
         {/* Floating Mobile Navigation */}
         <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 lg:hidden z-50">
-          <nav className="flex items-center gap-3 px-6 py-3 rounded-full bg-white shadow-lg">
+          <nav className="flex items-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-zinc-800 shadow-lg border border-gray-200 dark:border-zinc-700">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               const Icon = item.icon;
@@ -111,8 +112,8 @@ export default function ProfilePage({ user, children }) {
                   href={item.href}
                   className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors duration-200 ${
                     isActive
-                      ? 'text-blue-600'
-                      : 'text-gray-400 hover:text-gray-600'
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
                   }`}
                 >
                   <Icon size={20} />

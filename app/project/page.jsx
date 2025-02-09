@@ -39,10 +39,10 @@ export default function Page() {
     <section className="sm:px-8 pt-20 sm:mt-0">
       <div className="relative px-4 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-2xl lg:max-w-2xl">
-          <header className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl mt-20 dark:text-black">
+          <header className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl mt-20 text-gray-900 dark:text-gray-100">
             {'Innovative Solutions & Digital Experiences 🚀'}
           </header>
-          <p className="text-zinc-400 mx-auto leading-8 mt-10">
+          <p className="text-gray-600 dark:text-gray-400 mx-auto leading-8 mt-10">
             {
               'Passionate Full-Stack Developer crafting cutting-edge web solutions. From award-winning platforms to innovative apps, each project represents a unique challenge conquered. Most projects are open-source - feel free to explore and contribute! ✨'
             }
@@ -53,33 +53,31 @@ export default function Page() {
                 key={project.name}
                 className="group relative flex flex-col items-start"
               >
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-zinc-800 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">
                   <img
                     src={project.logo}
                     alt={project.name}
-                    className="rounded-full bg-white"
+                    className="rounded-full"
                   />
                 </div>
-                <h2 className="mt-6 text-base font-semibold dark:text-zinc-800 text-zinc-100">
-                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 dark:bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-100/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+                <h2 className="mt-6 text-base font-semibold text-gray-900 dark:text-gray-100">
+                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-gray-50 dark:bg-zinc-800/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
                   <Link
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10 text-zinc-900">
-                      {project.name}
-                    </span>
+                    <span className="relative z-10">{project.name}</span>
                   </Link>
                 </h2>
-                <p className="relative z-10 mt-2 text-sm dark:text-zinc-600 text-black-50 ">
+                <p className="relative z-10 mt-2 text-sm text-gray-600 dark:text-gray-400">
                   {project.description}
                 </p>
-                <p className="relative z-10 mt-2 text-xs dark:text-zinc-500 text-zinc-500">
+                <p className="relative z-10 mt-2 text-xs text-gray-500 dark:text-gray-500">
                   {project.tech}
                 </p>
-                <p className="relative z-10 mt-6 flex text-sm font-medium dark:text-zinc-500 transition group-hover:text-blue-500 text-blue-400">
+                <p className="relative z-10 mt-6 flex text-sm font-medium text-blue-600 dark:text-blue-400 transition group-hover:text-blue-500">
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"

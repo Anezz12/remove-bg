@@ -16,7 +16,7 @@ export default function Footer() {
             );
           })}
         </div> */}
-        <small className=" items-center gap-5 mb-5 dark:text-zinc-500 text-black">
+        <small className=" items-center gap-5 mb-5 dark:text-white text-black">
           &copy; 2025 Harsena Argretya All right reserved.
         </small>
       </div>
