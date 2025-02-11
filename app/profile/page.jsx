@@ -1,4 +1,4 @@
-import { User, Settings, FileText, Bell } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import MainContainer from '@/app/components/Settings/MainContainer';
 
 export default async function ProfilePage() {
