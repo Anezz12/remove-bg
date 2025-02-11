@@ -8,19 +8,16 @@ export default function ProfileSettingProfilePage() {
   const { data: session } = useSession();
   const [error, setError] = useState('');
 
-  const handleImageChange = async (e) => {
-    const file = e.target.files[0];
-    const MAX_SIZE = 1024 * 1024; // 1MB
-
-    if (file.size > MAX_SIZE) {
-      setError('File size is too large. Max 1MB');
-      e.target.value = null;
-      return;
-    }
-    setError('');
-  };
-
   const profileImage = session?.user?.image || ProfileDefault;
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setError('');
+    } else {
+      setError('Please select a valid image file.');
+    }
+  };
 
   return (
     <div className="min-h-screen pt-24 pb-10 px-2 bg-gray-50 dark:bg-zinc-900">
