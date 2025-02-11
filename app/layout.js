@@ -20,15 +20,13 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
       </head>
-      <body className="transition-colors duration-300">
+      <body className="min-h-screen antialiased transition-colors duration-300">
         <ThemeProvider>
           <AuthProvider>
-            <div>
-              <AdBanner />
-              <Navbar />
-              {children}
-              <Footer />
-            </div>
+            <AdBanner />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
           </AuthProvider>
         </ThemeProvider>
       </body>
