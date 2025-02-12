@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Container from '../Login/ContainerLogin';
+import { usePathname } from 'next/navigation';
 import LoginForm from '../Login/LoginForm';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import ToggleButton from '../Theme/ToggleButton';
@@ -19,6 +20,7 @@ export default function Navbarr() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const authMenuRef = useRef(null);
   const loginModalRef = useRef(null);
+  const pathname = usePathname();
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -86,13 +88,21 @@ export default function Navbarr() {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              className={`${
+                pathname === '/'
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-700 dark:text-gray-200'
+              } hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105`}
             >
               Home
             </Link>
             <Link
               href="/project"
-              className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              className={`${
+                pathname === '/project'
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-700 dark:text-gray-200'
+              } hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105`}
             >
               Project
             </Link>
