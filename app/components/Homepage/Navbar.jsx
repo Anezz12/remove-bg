@@ -125,19 +125,31 @@ export default function Navbarr() {
                     <div className="py-1">
                       <Link
                         href="/services/web"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold "
+                        className={`${
+                          pathname === '/services/web'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-700 dark:text-gray-200'
+                        } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                       >
                         Web Development
                       </Link>
                       <Link
                         href="/services/mobile"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold "
+                        className={`${
+                          pathname === '/services/mobile'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-700 dark:text-gray-200'
+                        } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                       >
                         Mobile Development
                       </Link>
                       <Link
                         href="/services/design"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold "
+                        className={`${
+                          pathname === '/services/design'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-700 dark:text-gray-200'
+                        } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                       >
                         Design
                       </Link>
