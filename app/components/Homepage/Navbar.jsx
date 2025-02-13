@@ -16,6 +16,8 @@ export default function Navbarr() {
   const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const authMenuRef = useRef(null);
@@ -26,11 +28,23 @@ export default function Navbarr() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollPos = window.scrollY;
+
+      // Determine if we're scrolling up or down
+      setIsVisible(
+        prevScrollPos > currentScrollPos || // Scrolling up
+          currentScrollPos < 10 // At the top
+      );
+
+      // Update background opacity based on scroll position
+      setIsScrolled(currentScrollPos > 20);
+
+      setPrevScrollPos(currentScrollPos);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [prevScrollPos]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -68,7 +82,7 @@ export default function Navbarr() {
         isScrolled
           ? 'bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-lg'
           : 'bg-transparent'
-      }`}
+      } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">

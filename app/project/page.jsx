@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -54,10 +55,12 @@ export default function Page() {
                 className="group relative flex flex-col items-start"
               >
                 <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-zinc-800 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">
-                  <img
+                  <Image
                     src={project.logo}
                     alt={project.name}
                     className="rounded-full"
+                    width={48}
+                    height={48}
                   />
                 </div>
                 <h2 className="mt-6 text-base font-semibold text-gray-900 dark:text-gray-100">
