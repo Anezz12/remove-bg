@@ -21,33 +21,74 @@ export default function About() {
               </div>
               <div className="lg:order-first lg:row-span-2">
                 <h1 className="text-4xl font-bold leading-[3rem] sm:leading-normal sm:text-5xl text-black dark:text-white">
-                  {
-                    "I'm Harsena Argretya, an indonesia Developer Living in Yogyakarta ID."
-                  }
+                  I'm{' '}
+                  <span className="underline decoration-blue-500 decoration-2">
+                    Harsena Argretya
+                  </span>
+                  , an indonesia Developer Living in{' '}
+                  <span className="underline decoration-blue-500 decoration-2">
+                    Yogyakarta ID
+                  </span>
+                  .
                 </h1>
                 <div className="mx-auto text-zinc-600 dark:text-zinc-400 leading-8 mt-10 mb-20">
                   <p>
-                    {
-                      "Hello I am Sena. a self-taught Indonesian programmer. since 2022, I've been learning programming. Now a software engineering student with more web development experience."
-                    }
+                    Hello I am Sena. a self-taught Indonesian programmer. since
+                    2022, I've been learning programming. Now a{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      software engineering student
+                    </span>{' '}
+                    with more web development experience.
                   </p>
                   <br />
                   <p>
-                    {
-                      "I'am a 5th semester student majoring in Informatics👨🏻‍💻, I decided to pursue my passion for programming. I studied full-stack web development. My favorite part of programming is the problem-solving aspect🔥"
-                    }
+                    I'am a{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      5th semester student
+                    </span>{' '}
+                    majoring in{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      Informatics
+                    </span>
+                    👨🏻‍💻, I decided to pursue my passion for programming. I
+                    studied{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      full-stack web development
+                    </span>
+                    . My favorite part of programming is the problem-solving
+                    aspect🔥
                   </p>
                   <br />
                   <p>
-                    {
-                      "I love the feeling of finally figuring out a solution to a problem. My core stack is React, Next.js, Node.js, MYSQL and MongoDB . I'am also familiar with Javascript and I'am starting to learn Typescript as well. I'am always looking to learn new technologies. I'am currently studying to develop my potential."
-                    }
+                    I love the feeling of finally figuring out a solution to a
+                    problem. My core stack is{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      React, Next.js, Node.js, MYSQL and MongoDB
+                    </span>
+                    . I'am also familiar with{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      Javascript
+                    </span>{' '}
+                    and I'am starting to learn{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      Typescript
+                    </span>{' '}
+                    as well. I'am always looking to learn new technologies. I'am
+                    currently studying to develop my potential.
                   </p>
                   <br />
                   <p>
-                    {
-                      "When I'm not coding, I enjoy playing video games⚔️, watching movies🍿. I also enjoy learning new things. I am currently learning about history I'm also learning how to use LInux OS."
-                    }
+                    When I'm not coding, I enjoy playing{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      video games
+                    </span>
+                    ⚔️, watching movies🍿. I also enjoy learning new things. I
+                    am currently learning about history I'm also learning how to
+                    use{' '}
+                    <span className="underline decoration-blue-500 decoration-2">
+                      Linux OS 🐧
+                    </span>
+                    .
                   </p>
                 </div>
               </div>
