@@ -19,4 +19,7 @@ body {
   background: var(--background);
   transition: background-color 0.3s ease;
   font-family: Arial, sans-serif; /* Added font-family for style consistency */
+} /* Hide reCAPTCHA badge */
+.grecaptcha-badge {
+  visibility: hidden !important;
 }
