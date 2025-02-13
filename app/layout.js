@@ -23,7 +23,6 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen antialiased transition-colors duration-300">
         <ThemeProvider>
           <AuthProvider>
-            <AdBanner />
             <Navbar />
             <main>{children}</main>
             <Footer />

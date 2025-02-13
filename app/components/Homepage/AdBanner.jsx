@@ -1,16 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import AdBannerSkeleton from './AdBannerSkeleton';
 
 export default function AdBanner() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Simulate loading for 1 second
+
+    const hideTimer = setTimeout(() => {
+      setIsVisible(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
 
   const closeBanner = () => {
     setIsVisible(false);
   };
 
   if (!isVisible) return null;
+  if (isLoading) return <AdBannerSkeleton />;
 
   return (
     <div
