@@ -41,7 +41,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-50 dark:bg-zinc-900">
+    <div className="flex items-center justify-center bg-gray-50 dark:bg-zinc-800">
       <div className="w-full max-w-sm">
         <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-md dark:shadow-zinc-800/50 px-6 py-8">
           <h1 className="text-xl font-semibold mb-4 text-center text-gray-900 dark:text-gray-100">
