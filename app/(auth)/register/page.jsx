@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -245,6 +246,17 @@ export default function RegisterPage() {
                 placeholder="••••••••"
               />
             </div>
+          </div>
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              have an account?
+              <Link
+                href="/login"
+                className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300"
+              >
+                {' Login'}
+              </Link>
+            </p>
           </div>
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-500 dark:text-gray-400">
