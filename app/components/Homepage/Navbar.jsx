@@ -266,7 +266,6 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                  ref={mobileMenuRef}
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="md:hidden p-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
@@ -282,6 +281,7 @@ export default function Navbar() {
 
           {/* Mobile Menu */}
           <div
+            ref={mobileMenuRef}
             className={`md:hidden fixed inset-x-0 top-[80px] transition-all duration-300 ease-in-out z-50 ${
               isMobileMenuOpen
                 ? 'opacity-100 translate-y-0'
