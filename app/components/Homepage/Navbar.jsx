@@ -23,6 +23,8 @@ export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const authMenuRef = useRef(null);
   const loginModalRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const mobileMenuRef = useRef(null);
   const pathname = usePathname();
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -57,6 +59,18 @@ export default function Navbar() {
         !loginModalRef.current.contains(event.target)
       ) {
         setIsLoginModalOpen(false);
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -252,6 +266,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
+                  ref={mobileMenuRef}
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="md:hidden p-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
@@ -305,7 +320,10 @@ export default function Navbar() {
                       </button>
 
                       {isDropdownOpen && (
-                        <div className="mt-2 rounded-lg bg-gray-50 dark:bg-zinc-800 overflow-hidden">
+                        <div
+                          ref={dropdownRef}
+                          className="mt-2 rounded-lg bg-gray-50 dark:bg-zinc-800 overflow-hidden"
+                        >
                           <Link
                             href="/services/web"
                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-700 hover:text-blue-600 dark:hover:text-blue-400"
