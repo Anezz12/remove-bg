@@ -261,23 +261,23 @@ export default function RegisterPage() {
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-500 dark:text-gray-400">
               This site is protected by reCAPTCHA and the Google{' '}
-              <a
+              <Link
                 href="https://policies.google.com/privacy"
                 className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Privacy Policy
-              </a>{' '}
+              </Link>{' '}
               and{' '}
-              <a
+              <Link
                 href="https://policies.google.com/terms"
                 className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Terms of Service
-              </a>{' '}
+              </Link>{' '}
               apply.
             </p>
           </div>
