@@ -180,40 +180,50 @@ export default function Navbar() {
                       <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800 shadow-lg">
                         <div className="py-1">
                           <Link
-                            href="/services/web"
+                            href="/404"
                             className={`${
                               pathname === '/services/web'
                                 ? 'text-blue-600 dark:text-blue-400'
                                 : 'text-gray-700 dark:text-gray-200'
                             } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                           >
-                            Web Development
+                            Coming Soon
                           </Link>
                           <Link
-                            href="/services/mobile"
+                            href="/404"
                             className={`${
                               pathname === '/services/mobile'
                                 ? 'text-blue-600 dark:text-blue-400'
                                 : 'text-gray-700 dark:text-gray-200'
                             } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                           >
-                            Mobile Development
+                            Coming Soon
                           </Link>
                           <Link
-                            href="/services/design"
+                            href="/404"
                             className={`${
                               pathname === '/services/design'
                                 ? 'text-blue-600 dark:text-blue-400'
                                 : 'text-gray-700 dark:text-gray-200'
                             } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-800 hover:text-blue-600 dark:hover:text-blue-400 font-semibold`}
                           >
-                            Design
+                            Coming Soon
                           </Link>
                         </div>
                       </div>
                     )}
                   </div>
                 )}
+                <Link
+                  href="/blogs"
+                  className={`${
+                    pathname === '/blogs'
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-700 dark:text-gray-200'
+                  } hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105`}
+                >
+                  Blogs
+                </Link>
               </div>
               {/* Auth Button */}
               <div className="flex items-center space-x-4">

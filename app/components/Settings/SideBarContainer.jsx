@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { User, Settings, FileText, Bell, LogOut } from 'lucide-react';
+import { User, Settings, FileText, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import defaultAfatar from '@/app/assets/image/profile.png';
 
@@ -24,10 +24,8 @@ export default function ProfilePage({ user, children }) {
   }, []);
 
   const navigation = [
-    { name: 'Resume', href: '/profile', icon: User },
-    { name: 'Progress', href: '/profile/progress', icon: FileText },
-    { name: 'Courses', href: '/profile/courses', icon: Bell },
-    { name: 'Catalog', href: '/profile/catalog', icon: Bell },
+    { name: 'Profile', href: '/profile', icon: User },
+    { name: 'Blogs', href: '/404', icon: FileText },
     { name: 'Settings', href: '/profile/setting', icon: Settings },
   ];
 

@@ -1,98 +1,148 @@
-import { FileText } from 'lucide-react';
 import MainContainer from '@/app/components/Settings/MainContainer';
+import { getSessionUser } from '../utils/getSessionUser';
+import User from '../models/User';
+import connectDB from '../config/database';
+import { convertToSerializedObject } from '../utils/convertToObject';
+import { redirect } from 'next/navigation';
+import Image from 'next/image';
+import { Calendar, Mail, Shield, Clock, User as UserIcon } from 'lucide-react';
+import defaultAvatar from '@/app/assets/image/profile.png';
 
 export default async function ProfilePage() {
+  await connectDB();
+
+  const sessionUser = await getSessionUser();
+  if (!sessionUser) {
+    redirect('/login');
+  }
+
+  // Find user by email instead of userId
+  const user = await User.findOne({ email: sessionUser.user.email }).lean();
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  // Convert user data to serializable object
+  const serializedUser = convertToSerializedObject(user);
+
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
   return (
-    <>
-      <MainContainer>
-        <div className="flex-1 p-8">
-          <div className="max-w-5xl mx-auto">
-            {/* Stats Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700">
-                <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                  Total Projects
-                </h3>
-                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100 mt-2">
-                  12
-                </p>
-                <div className="flex items-center mt-4">
-                  <span className="text-green-500 dark:text-green-400 text-sm font-medium">
-                    ↑ 7%
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 text-sm ml-2">
-                    vs last month
-                  </span>
-                </div>
-              </div>
+    <MainContainer>
+      <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm">
+        {/* Header/Banner Section */}
+        <div className="relative h-32 bg-gradient-to-r from-blue-500 to-blue-600 rounded-t-xl">
+          <div className="absolute -bottom-12 left-8">
+            <Image
+              src={sessionUser.user.image || defaultAvatar}
+              alt={serializedUser.name || 'Profile'}
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-white dark:border-zinc-800"
+            />
+          </div>
+        </div>
 
-              <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700">
-                <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                  Contributions
-                </h3>
-                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100 mt-2">
-                  158
-                </p>
-                <div className="flex items-center mt-4">
-                  <span className="text-green-500 dark:text-green-400 text-sm font-medium">
-                    ↑ 12%
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 text-sm ml-2">
-                    vs last month
-                  </span>
-                </div>
-              </div>
+        {/* Profile Content */}
+        <div className="pt-16 px-8 pb-8">
+          {/* Basic Info */}
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              {serializedUser.name}
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400">
+              @{serializedUser.username}
+            </p>
+          </div>
 
-              <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700">
-                <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                  Activity Score
-                </h3>
-                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100 mt-2">
-                  92%
+          {/* Detailed Info Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Email */}
+            <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <Mail className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium">Email</p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {serializedUser.email}
                 </p>
-                <div className="flex items-center mt-4">
-                  <span className="text-green-500 dark:text-green-400 text-sm font-medium">
-                    ↑ 3%
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 text-sm ml-2">
-                    vs last month
-                  </span>
-                </div>
               </div>
             </div>
 
-            {/* Recent Activity */}
-            <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-zinc-700">
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Recent Activity
-              </h2>
-              <div className="space-y-4">
-                {[1, 2, 3].map((_, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center p-4 border border-gray-100 dark:border-zinc-700 rounded-lg bg-gray-50 dark:bg-zinc-900/50"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-4">
-                      <FileText
-                        className="text-blue-600 dark:text-blue-400"
-                        size={20}
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                        Updated Project Documentation
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        2 hours ago
-                      </p>
-                    </div>
-                  </div>
-                ))}
+            {/* Role */}
+            <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <Shield className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium">Role</p>
+                <p className="capitalize text-gray-600 dark:text-gray-400">
+                  {sessionUser.user.role}
+                </p>
+              </div>
+            </div>
+
+            {/* Provider */}
+            <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <UserIcon className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium">Sign in Method</p>
+                <p className="capitalize text-gray-600 dark:text-gray-400">
+                  {serializedUser.provider}
+                </p>
+              </div>
+            </div>
+
+            {/* Join Date */}
+            <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <Calendar className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium">Joined</p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {formatDate(serializedUser.createdAt)}
+                </p>
+              </div>
+            </div>
+
+            {/* Last Updated */}
+            <div className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <Clock className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium">Last Updated</p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {formatDate(serializedUser.updatedAt)}
+                </p>
               </div>
             </div>
           </div>
+
+          {/* Account Status */}
+          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-zinc-700">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div
+                  className={`w-2 h-2 rounded-full ${
+                    serializedUser.deletedAt ? 'bg-red-500' : 'bg-green-500'
+                  }`}
+                />
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  {serializedUser.deletedAt
+                    ? 'Account Deactivated'
+                    : 'Account Active'}
+                </span>
+              </div>
+              {serializedUser.deletedAt && (
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Deactivated on {formatDate(serializedUser.deletedAt)}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
-      </MainContainer>
-    </>
+      </div>
+    </MainContainer>
   );
 }
