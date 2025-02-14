@@ -3,6 +3,7 @@ import ProfileDefault from '@/app/assets/image/profile.png';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProfileSettingProfilePage() {
   const { data: session } = useSession();
@@ -20,7 +21,7 @@ export default function ProfileSettingProfilePage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-10 px-2 bg-gray-50 dark:bg-zinc-900">
+    <div className="min-h-52 pt-24 pb-10 px-2 bg-gray-50 dark:bg-zinc-900">
       <div className="max-w-2xl mx-10">
         <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
           Edit Profile
@@ -168,12 +169,14 @@ export default function ProfileSettingProfilePage() {
 
             {/* Action Buttons */}
             <div className="flex justify-end space-x-4 pt-4">
-              <button
-                type="button"
-                className="px-6 py-2 border border-gray-300 dark:border-zinc-700 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50 transition-colors"
-              >
-                Cancel
-              </button>
+              <Link href="/profile/setting">
+                <button
+                  type="button"
+                  className="px-6 py-2 border border-gray-300 dark:border-zinc-700 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50 transition-colors"
+                >
+                  Cancel
+                </button>
+              </Link>
               <button
                 type="submit"
                 className="px-6 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-md hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors"

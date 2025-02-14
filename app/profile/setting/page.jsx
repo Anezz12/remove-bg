@@ -5,7 +5,7 @@ export default function ProfileSettingPage() {
   return (
     <>
       <MainContainer>
-        <div className="min-h-screen pt-20 px-6 bg-gray-50 dark:bg-zinc-900">
+        <div className="min-h-52 pt-20 px-6 bg-gray-50 dark:bg-zinc-900">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-100">
               Settings

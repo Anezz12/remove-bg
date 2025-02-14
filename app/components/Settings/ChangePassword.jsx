@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
+import Link from 'next/link';
 
 export default function ChangePassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,7 @@ export default function ChangePassword() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-10 px-2 bg-gray-50 dark:bg-zinc-900">
+    <div className="min-h-52 pt-24 pb-10 px-2 bg-gray-50 dark:bg-zinc-900">
       <div className="max-w-2xl mx-10">
         <h1 className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">
           Edit Password
@@ -125,12 +126,14 @@ export default function ChangePassword() {
             </div>
 
             <div className="flex justify-end space-x-4">
-              <button
-                type="button"
-                className="px-6 py-2 border border-gray-300 dark:border-zinc-700 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50 transition-colors"
-              >
-                Cancel
-              </button>
+              <Link href="/profile/setting">
+                <button
+                  type="button"
+                  className="px-6 py-2 border border-gray-300 dark:border-zinc-700 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-zinc-700/50 transition-colors"
+                >
+                  Cancel
+                </button>
+              </Link>
               <button
                 type="submit"
                 disabled={isLoading}
