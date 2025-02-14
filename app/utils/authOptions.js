@@ -110,8 +110,9 @@ export const authOptions = {
             await User.create({
               email: profile.email,
               username: username,
-              name: profile.name, // Tambahkan name dari Google profile
+              name: profile.name,
               image: profile.picture,
+              provider: 'google',
             });
           }
         }
@@ -136,6 +137,7 @@ export const authOptions = {
             name: user.name || user.username,
             username: user.username,
             image: user.image,
+            provider: user.provider,
           };
         }
         return session;

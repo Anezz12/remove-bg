@@ -3,7 +3,7 @@ import AuthProvider from './components/Login/AuthProvider';
 import Footer from './components/Homepage/Footer';
 import Navbar from './components/Homepage/Navbar';
 import Script from 'next/script';
-import AdBanner from './components/Homepage/AdBanner';
+import { Toaster } from 'react-hot-toast';
 import ThemeProvider from './components/Theme/ThemeProvider';
 
 export const metadata = {
@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <Toaster />
           </AuthProvider>
         </ThemeProvider>
       </body>

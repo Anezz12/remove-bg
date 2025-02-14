@@ -1,11 +1,13 @@
 import connectDB from '@/app/config/database';
 import bcrypt from 'bcryptjs';
-import { getSession } from 'next-auth/react';
+import User from '@/app/models/User';
+import { getSessionUser } from '@/app/utils/getSessionUser';
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
+  await connectDB();
   try {
-    const session = await getSession({ req });
+    const session = await getSessionUser(req);
     if (!session) {
       return NextResponse.json(
         { message: 'Not authenticated' },
@@ -14,11 +16,8 @@ export async function POST(req) {
     }
 
     const { oldPassword, newPassword } = await req.json();
-    const { db } = await connectDB();
 
-    const user = await db
-      .collection('users')
-      .findOne({ email: session.user.email });
+    const user = await User.findOne({ email: session.user.email });
 
     if (!user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
@@ -47,18 +46,16 @@ export async function POST(req) {
 
     const hashedPassword = await bcrypt.hash(newPassword, 12);
 
-    await db
-      .collection('users')
-      .updateOne(
-        { email: session.user.email },
-        { $set: { password: hashedPassword } }
-      );
+    // Update using Mongoose
+    user.password = hashedPassword;
+    await user.save();
 
     return NextResponse.json(
       { message: 'Password updated successfully' },
       { status: 200 }
     );
   } catch (error) {
+    console.error('Password update error:', error);
     return NextResponse.json(
       { message: 'Error updating password' },
       { status: 500 }
