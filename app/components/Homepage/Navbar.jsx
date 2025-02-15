@@ -25,6 +25,7 @@ export default function Navbar() {
   const loginModalRef = useRef(null);
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const dekstopMenuRef = useRef(null);
   const pathname = usePathname();
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -71,6 +72,12 @@ export default function Navbar() {
         !mobileMenuRef.current.contains(event.target)
       ) {
         setIsMobileMenuOpen(false);
+      }
+      if (
+        dekstopMenuRef.current &&
+        !dekstopMenuRef.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -191,7 +198,10 @@ export default function Navbar() {
                     </button>
 
                     {isDropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800 shadow-lg">
+                      <div
+                        ref={dekstopMenuRef}
+                        className="absolute right-0 mt-2 w-48 rounded-xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800 shadow-lg"
+                      >
                         <div className="py-1">
                           <Link
                             href="/404"
@@ -321,7 +331,7 @@ export default function Navbar() {
 
                       {isDropdownOpen && (
                         <div
-                          ref={dropdownRef}
+                          // ref={dropdownRef}
                           className="mt-2 rounded-lg bg-gray-50 dark:bg-zinc-800 overflow-hidden"
                         >
                           <Link
@@ -329,21 +339,21 @@ export default function Navbar() {
                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-700 hover:text-blue-600 dark:hover:text-blue-400"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
-                            Web Development
+                            Coming Soon
                           </Link>
                           <Link
                             href="/services/mobile"
                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-700 hover:text-blue-600 dark:hover:text-blue-400"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
-                            Mobile Development
+                            Coming Soon
                           </Link>
                           <Link
                             href="/services/design"
                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-zinc-700 hover:text-blue-600 dark:hover:text-blue-400"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
-                            Design
+                            Coming Soon
                           </Link>
                         </div>
                       )}

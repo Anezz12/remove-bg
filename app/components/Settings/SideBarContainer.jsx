@@ -25,7 +25,7 @@ export default function ProfilePage({ user, children }) {
 
   const navigation = [
     { name: 'Profile', href: '/profile', icon: User },
-    { name: 'Blogs', href: '/404', icon: FileText },
+    { name: 'Blogs', href: '/profile/blogs', icon: FileText },
     { name: 'Settings', href: '/profile/setting', icon: Settings },
   ];
 
