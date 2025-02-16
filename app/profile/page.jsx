@@ -9,11 +9,18 @@ import { Calendar, Mail, Shield, Clock, User as UserIcon } from 'lucide-react';
 import defaultAvatar from '@/app/assets/image/profile.png';
 
 export default async function ProfilePage() {
-  await connectDB();
+  try {
+    await connectDB();
 
-  const sessionUser = await getSessionUser();
-  if (!sessionUser) {
-    redirect('/login');
+    const sessionUser = await getSessionUser();
+
+    console.log('sessionUser Status:', sessionUser);
+    if (!sessionUser) {
+      redirect('/login');
+    }
+  } catch (error) {
+    console.error('Profile Page Error:', error);
+    throw error;
   }
 
   // Find user by email instead of userId
