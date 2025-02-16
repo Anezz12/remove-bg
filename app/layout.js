@@ -13,6 +13,9 @@ export const metadata = {
     'Personal portfolio of Harsena Argretya, a student at AMIKOM University. Explore my projects, skills, and professional journey.',
   keywords: [
     'Harsena Argretya',
+    'sena',
+    'Argretya',
+    'Harsena',
     'AMIKOM',
     'AMIKOM University',
     'Portfolio',
