@@ -47,7 +47,7 @@ export default async function ProfilePage() {
         <div className="relative h-32 bg-gradient-to-r from-blue-500 to-blue-600 rounded-t-xl">
           <div className="absolute -bottom-12 left-8">
             <Image
-              src={sessionUser.user.image || defaultAvatar}
+              src={serializedUser.user.image || defaultAvatar}
               alt={serializedUser.name || 'Profile'}
               width={96}
               height={96}
@@ -87,7 +87,7 @@ export default async function ProfilePage() {
               <div>
                 <p className="text-sm font-medium">Role</p>
                 <p className="capitalize text-gray-600 dark:text-gray-400">
-                  {sessionUser.user.role}
+                  {serializedUser.user.role}
                 </p>
               </div>
             </div>
