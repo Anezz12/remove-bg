@@ -12,6 +12,9 @@ export default async function ProfilePage() {
   await connectDB();
 
   const sessionUser = await getSessionUser();
+  if (!sessionUser) {
+    redirect('/login');
+  }
 
   // Find user by email instead of userId
   const user = await User.findOne({ email: sessionUser.user.email }).lean();
