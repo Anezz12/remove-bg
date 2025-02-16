@@ -1,6 +1,6 @@
 import { RocketIcon } from 'lucide-react';
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-8">
       <div className="w-full max-w-2xl mx-auto">
@@ -13,17 +13,17 @@ export default function BlogsPage() {
               Coming Soon! 🚀
             </h1>
             <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-              We're working hard to bring you an amazing blogging experience.
-              Stay tuned for exciting content about web development, technology,
-              and more!
+              We&apos;re working hard to bring you an amazing blogging
+              experience. Stay tuned for exciting content about web development,
+              technology, and more!
             </p>
             <div className="pt-4">
               <div className="inline-flex items-center space-x-2 bg-blue-600/10 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-full font-semibold">
                 <span>Launching Soon</span>
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.3s]"></div>
-                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.2s]"></div>
-                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.1s]"></div>
+                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.3s]" />
+                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.2s]" />
+                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.1s]" />
                 </div>
               </div>
             </div>

@@ -34,7 +34,7 @@ export const metadata = {
     siteName: 'Harsena Argretya Portfolio',
     images: [
       {
-        url: PotoProfile,
+        url: 'public/avatar.jpeg',
         width: 1200,
         height: 630,
         alt: 'Harsena Argretya - AMIKOM University Student',
