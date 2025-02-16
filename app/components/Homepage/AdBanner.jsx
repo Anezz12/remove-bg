@@ -13,13 +13,8 @@ export default function AdBanner() {
       setIsLoading(false);
     }, 1000); // Simulate loading for 1 second
 
-    const hideTimer = setTimeout(() => {
-      setIsVisible(false);
-    }, 5000);
-
     return () => {
       clearTimeout(timer);
-      clearTimeout(hideTimer);
     };
   }, []);
 
