@@ -96,7 +96,7 @@ const blogPosts = [
 
 export default function BlogsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen px-20 pt-20 md:px-0 md:pt-10 bg-white dark:bg-gray-900">
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-8">
