@@ -1,38 +1,64 @@
-import { RocketIcon } from 'lucide-react';
+import Link from 'next/link';
 import MainContainer from '@/app/components/Settings/MainContainer';
+import { PenSquare, LayoutDashboard } from 'lucide-react';
 
 export default function BlogsPage() {
   return (
     <MainContainer>
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-8">
-        <div className="w-full max-w-2xl mx-auto">
-          <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800 px-8 py-14 rounded-2xl shadow-lg transform hover:scale-[1.01] transition-all duration-300">
-            <div className="flex justify-center mb-8">
-              <RocketIcon className="text-blue-600 dark:text-blue-400 h-16 w-16 animate-pulse" />
-            </div>
-            <div className="space-y-6 text-center">
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
-                Coming Soon! 🚀
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                We're working hard to bring you an amazing blogging experience.
-                Stay tuned for exciting content about web development,
-                technology, and more!
-              </p>
-              <div className="pt-4">
-                <div className="inline-flex items-center space-x-2 bg-blue-600/10 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-full font-semibold">
-                  <span>Launching Soon</span>
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.3s]"></div>
-                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.2s]"></div>
-                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-bounce [animation-delay:-0.1s]"></div>
-                  </div>
+      <div className=" pt-20 px-6  dark:from-zinc-900 dark:to-zinc-800">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
+              Manage Your Blogs
+            </h1>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
+              Create and manage your blog content from one place
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Create Blog Card */}
+            <div className="group bg-white dark:bg-zinc-800/50 rounded-xl shadow-sm hover:shadow-md dark:shadow-zinc-800/30 p-8 hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-zinc-700/50">
+              <div className="flex flex-col items-center">
+                <div className="p-3 bg-blue-50 dark:bg-blue-500/10 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <PenSquare className="h-8 w-8 text-blue-500 dark:text-blue-400" />
                 </div>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                  Create New Blog
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
+                  Share your thoughts and ideas with the world
+                </p>
+                <Link href="/profile/blogs/add" className="w-full">
+                  <button className="w-full bg-blue-500 dark:bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors duration-300 font-medium shadow-sm hover:shadow">
+                    Start Writing
+                  </button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Blog Dashboard Card */}
+            <div className="group bg-white dark:bg-zinc-800/50 rounded-xl shadow-sm hover:shadow-md dark:shadow-zinc-800/30 p-8 hover:scale-[1.02] transition-all duration-300 border border-gray-100 dark:border-zinc-700/50">
+              <div className="flex flex-col items-center">
+                <div className="p-3 bg-green-50 dark:bg-green-500/10 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <LayoutDashboard className="h-8 w-8 text-green-500 dark:text-green-400" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                  Blog Dashboard
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
+                  Manage and track your published content
+                </p>
+                <Link href="/profile/blogs/dashboard" className="w-full">
+                  <button className="w-full bg-green-500 dark:bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors duration-300 font-medium shadow-sm hover:shadow">
+                    View Dashboard
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </MainContainer>
   );
 }

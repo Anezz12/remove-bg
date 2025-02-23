@@ -24,3 +24,41 @@ body {
 .grecaptcha-badge {
   visibility: hidden !important;
 }
+
+/* ADD BLOG */
+.prose-container .ql-container {
+  min-height: 200px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.prose-container .ql-toolbar {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.prose-container .ql-editor {
+  min-height: 200px;
+}
+
+/* Dark mode styles for React Quill */
+.dark .ql-toolbar {
+  border-color: #374151 !important;
+  background: #374151;
+}
+
+.dark .ql-container {
+  border-color: #374151 !important;
+}
+
+.dark .ql-toolbar .ql-stroke {
+  stroke: #fff !important;
+}
+
+.dark .ql-toolbar .ql-fill {
+  fill: #fff !important;
+}
+
+.dark .ql-toolbar .ql-picker {
+  color: #fff !important;
+}
