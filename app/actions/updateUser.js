@@ -1,7 +1,6 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import cloudinary from '../config/cloudinary';
 import connectDB from '../config/database';
 import User from '../models/User';
