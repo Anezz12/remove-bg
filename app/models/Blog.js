@@ -1,6 +1,11 @@
 import { Schema, model, models } from 'mongoose';
 
 const BlogSchema = new Schema({
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -9,10 +14,13 @@ const BlogSchema = new Schema({
     type: String,
     required: true,
   },
-  author: {
+  image: {
     type: String,
     required: true,
-    ref: 'User',
+  },
+  tags: {
+    type: [String],
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -27,3 +35,6 @@ const BlogSchema = new Schema({
     type: Date,
   },
 });
+
+const Blog = models.Blog || model('Blog', BlogSchema);
+export default Blog;
