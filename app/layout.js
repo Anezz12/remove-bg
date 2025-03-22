@@ -5,7 +5,8 @@ import Navbar from './components/Homepage/Navbar';
 import Script from 'next/script';
 import { Toaster } from 'react-hot-toast';
 import ThemeProvider from './components/Theme/ThemeProvider';
-import PotoProfile from '@/public/avatar.jpeg';
+
+const PotoProfile = '@/public/avatar.jpeg';
 
 export const metadata = {
   title: 'Harsena Argretya | Personal portfolio',

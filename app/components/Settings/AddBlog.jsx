@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import {
   ImagePlus,
   Save,
-  Clock,
   Hash,
   Calendar,
   Smile,

@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import profileDefault from '@/app/assets/image/profile.png';
+//import profileDefault from '@/app/assets/image/profile.png';
 import { useState, useEffect, useRef } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
@@ -10,6 +10,8 @@ import LoginForm from '../Login/LoginForm';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import ToggleButton from '../Theme/ToggleButton';
 import AdBanner from './AdBanner';
+
+const profileDefault = '@/app/assets/image/profile.png';
 
 export default function Navbar() {
   const { data: session, status } = useSession();

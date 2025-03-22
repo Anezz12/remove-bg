@@ -2,12 +2,26 @@ import connectDB from '@/app/config/database';
 import bcrypt from 'bcryptjs';
 import User from '@/app/models/User';
 import { getSessionUser } from '@/app/utils/getSessionUser';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
-export async function POST(req) {
+// define interface for POST request body
+
+interface PasswordChangeRequest {
+  oldPassword: string;
+  newPassword: string;
+}
+
+interface SessionUser {
+  user: {
+    email: string;
+    [key: string]: any;
+  };
+}
+
+export async function POST(req: NextRequest): Promise<NextResponse> {
   await connectDB();
   try {
-    const session = await getSessionUser(req);
+    const session = ((await getSessionUser()) as SessionUser) || null;
     if (!session) {
       return NextResponse.json(
         { message: 'Not authenticated' },
@@ -15,7 +29,8 @@ export async function POST(req) {
       );
     }
 
-    const { oldPassword, newPassword } = await req.json();
+    const { oldPassword, newPassword }: PasswordChangeRequest =
+      await req.json();
 
     const user = await User.findOne({ email: session.user.email });
 
@@ -33,7 +48,7 @@ export async function POST(req) {
     }
 
     // Validate new password
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const passwordPattern: RegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (!passwordPattern.test(newPassword)) {
       return NextResponse.json(
         {
@@ -44,7 +59,7 @@ export async function POST(req) {
       );
     }
 
-    const hashedPassword = await bcrypt.hash(newPassword, 12);
+    const hashedPassword: string = await bcrypt.hash(newPassword, 12);
 
     // Update using Mongoose
     user.password = hashedPassword;
@@ -54,7 +69,7 @@ export async function POST(req) {
       { message: 'Password updated successfully' },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Password update error:', error);
     return NextResponse.json(
       { message: 'Error updating password' },
